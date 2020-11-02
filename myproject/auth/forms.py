@@ -8,7 +8,7 @@ from myproject.models import Gamer
 class LoginForm(FlaskForm):
     email = StringField('Email',validators=[DataRequired(),Email()])
     password = PasswordField('Password',validators=[DataRequired()])
-    submit = SubmitField('Log In')
+    submit = SubmitField('Sign In')
 
 
 class RegistrationForm(FlaskForm):

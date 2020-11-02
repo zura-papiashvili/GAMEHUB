@@ -15,7 +15,7 @@ class Gamer(db.Model,UserMixin):
     password = db.Column(db.String)
     photo = db.Column(db.String)
     role = db.Column(db.String)
-    posts = db.relationship('posts', backref="author",lazy=True)
+    posts = db.relationship('Post', backref="gamers",lazy='dynamic')
     # clan = relationship('clans', backref="member")
     role = db.Column(db.String)
 
@@ -35,10 +35,8 @@ class Gamer(db.Model,UserMixin):
 
 
 class Post(db.Model):
-    tablename = "posts"
-    gamers = db.relationship(Gamer)
+    __tablename__ = "posts"
     id = db.Column(db.Integer, primary_key=True)
-    gamer_id=db.Column(db.Integer,db.ForeignKey('gamers.id'),nullable=False)
     title = db.Column(db.String(140), nullable=False)
     text = db.Column(db.Text,nullable=False)
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)

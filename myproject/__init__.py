@@ -19,6 +19,8 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 from myproject.auth.views import auth_blueprint
+from myproject.navbar.views import navbar_blueprint
 from myproject.models import Post
 
-app.register_blueprint(auth_blueprint,url_prefix="/auth")
+app.register_blueprint(auth_blueprint,url_prefix="/")
+app.register_blueprint(navbar_blueprint,url_prefix="/")

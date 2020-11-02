@@ -13,9 +13,15 @@
         <meta property="og:image" content="">
         <meta property="og:description" content="Social Media Platfrom for Gamers! Singup Free! Hold championships and get prizes." />
         <title>GAMEHUB</title>
-       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
-       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fonts.css') }}">
+        <link rel="stylesheet" type="text/css" href="../static/assets/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../static/assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../static/assets/css/fonts.css">
+<!--        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/reset.css') }}">-->
+<!--        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/style.css') }}">-->
+<!--        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/fonts.css') }}">-->
+        <link rel="stylesheet" type="text/css" href="url_for('static',filename='css/reset.css')}}">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
 </head>
 <body>
         <header>
@@ -27,7 +33,7 @@
                                                 <li class="flex searchlogo"><img src="{{ url_for('static', filename='images/search.svg') }}" alt="search"></li>
                                                 <li class="flex donate"><a class="donation" href="#">donate</a></li>
                                                 <li class="flex eng">eng <img src="{{ url_for('static', filename='images/Polygon3.svg') }}" alt="triangle"></li>
-                                                <li ><a href='/auth'><img class="useravatar" src="{{ url_for('static', filename='images/useravatar.png') }}" alt="avatar"></a></li>
+                                                <li ><a href='registration.html'><img class="useravatar" src="{{ url_for('static', filename='images/useravatar.png') }}" alt="avatar"></a></li>
                                         </ul>
                                 </div>
                         </div>
@@ -75,6 +81,24 @@
                                         post_builder(post)
                                 {% endfor %}
 
+                                <div class="box4"><p class="bookad">advertisment</p></div>
+
+                                <nav aria-label="Page navigation example">
+                                  <ul class="pagination justify-content-center">
+                                     {% for page_num in blog_posts.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2) %}
+                                          {% if blog_posts.page == page_num %}
+                                              <li class="page-item disabled">
+                                                  <a class="page-link" href="{{ url_for('core.index',page=page_num)}}">{{ page_num }}</a>
+                                              </li>
+                                          {% else %}
+                                              <li class="page-item ">
+                                                  <a class="page-link" href="{{ url_for('core.index',page=page_num)}}">{{ page_num }}</a>
+                                              </li>
+                                          {% endif %}
+
+                                      {% endfor %}
+                                  </ul>
+                                </nav>
 
                         </section>
                         <section class="nncolumn">

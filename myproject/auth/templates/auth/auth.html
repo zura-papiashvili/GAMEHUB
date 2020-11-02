@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GAMEHUB</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/reset.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/fonts.css') }}">
+</head>
+<body class="reg-body">
+	<div class="reg-container" id="reg-container">
+		<div class="form-reg-container sign-up-reg-container">
+            <a href="{{url_for('index')}}"><img class="arrow" src="{{ url_for('static',filename='images/arrow.png')}}"></a>
+			<form class="reg-form" action="#">
+				<h1>Create Account</h1>
+				{{ regForm.hidden_tag()}}
+				{{ regForm.username(placeholder="Username")}}
+				{{ regForm.email(placeholder="Email") }}
+				{{ regForm.password(placeholder="Password")}}
+				{{ regForm.pass_confirm(placeholder="Repeat Password") }}
+				{{ regForm.submit(class="submit") }}
+			</form>
+		</div>
+		<div class="form-reg-container sign-in-reg-container">
+            <a href="{{url_for('index')}}"><img class="arrow" src="{{ url_for('static',filename='images/arrow.png')}}"></a>
+			<form class="reg-form" action="#">
+				<h1>Sign in</h1>
+				{{ loginForm.hidden_tag() }}
+				{{ loginForm.email(placeholder="Email")}}
+				{{ loginForm.password(placeholder="Password")}}
+				<a href="#">Forgot your password?</a>
+				{{ loginForm.submit(class="submit") }}
+			</form>
+		</div>
+		<div class="overlay-reg-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Welcome Back!</h1>
+					<p>To keep connected with us please login with your personal info</p>
+					<button class="ghost" id="signIn">Sign In</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hello, Gamer!</h1>
+					<p>Enter your personal details and start journey with us</p>
+					<button class="ghost" id="signUp">Sign Up</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="{{ url_for('static',filename='js/registration.js') }}"></script>
+
+</body>
+</html>

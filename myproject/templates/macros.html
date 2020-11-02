@@ -8,11 +8,10 @@
 
 {% macro post_builder(post) %}
 <div class="box2">
-  {% for post in blog_posts.items %}
   <div>
           <img class="piconTortura" src="{{ url_for('static', filename='images/Zappa.jpg') }}" alt="zappa">
-          <a href="{{ url_for('users.user_posts',username=post.author.username)}}">Written By: {{ post.author.username }}</a>
-          <p class="pDescribe"><a href="{{ url_for('users.user_posts',username=post.author.username)}}">Posted By: <span>{{ post.author.username }}</span></a>Published on: {{ post.date.strftime('%Y-%m-%d') }}</p>
+          <a href="{{ url_for('users.user_posts',username=post.author.username)}}">Written By: {{ post.author }}</a>
+          <p class="pDescribe"><a href="{{ url_for('users.user_posts',username=post.author.username)}}">Posted By: <span>{{ post.author }}</span></a>Published on: {{ post.date.strftime('%Y-%m-%d') }}</p>
   </div>
   <div class="pHeader"> <a href="{{ url_for('blog_posts.blog_post',blog_post_id=post.id )}}">{{ post.title }}</a></div>
   <hr>
