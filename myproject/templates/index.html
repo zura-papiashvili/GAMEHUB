@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Social Media Platfrom for Gamers! Singup Free! Hold championships and get prizes.">
+        <meta name="keywords" content="PUBG, CS:Go, World of War, Gamers, Championships">
+        <meta name="author" content="Karlo Tevzadze">
+        <meta property="og:title" content="GAMEHUB" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://marvelyko.github.io/gamehub.ge/index.html"/>
+        <meta property="og:image" content="">
+        <meta property="og:description" content="Social Media Platfrom for Gamers! Singup Free! Hold championships and get prizes." />
+        <title>GAMEHUB</title>
+        <link rel="stylesheet" type="text/css" href="../static/assets/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../static/assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../static/assets/css/fonts.css">
+<!--        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/reset.css') }}">-->
+<!--        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/style.css') }}">-->
+<!--        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/fonts.css') }}">-->
+        link rel="stylesheet" type="text/css" href="url_for('static',filename='css/reset.css')}}">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
+</head>
+<body>
+        <header>
+                <div class="header">
+                        <div class="header-block">
+                                <a href="index.html" class="logo">gamehub</a>
+                                <div>
+                                        <ul class="header-ul">
+                                                <li class="flex searchlogo"><img src="{{ url_for('static', filename='images/search.svg') }}" alt="search"></li>
+                                                <li class="flex donate"><a class="donation" href="#">donate</a></li>
+                                                <li class="flex eng">eng <img src="{{ url_for('static', filename='images/Polygon3.svg') }}" alt="triangle"></li>
+                                                <li ><a href='registration.html'><img class="useravatar" src="{{ url_for('static', filename='images/useravatar.png') }}" alt="avatar"></a></li>
+                                        </ul>
+                                </div>
+                        </div>
+                </div>
+                <div class="header-2">
+                        <div class="header-block">
+                                <div>
+                                        <ul class="header-ul">
+                                                <li ><a href='registration.html'><img class="useravatar" src="{{ url_for('static', filename='images/useravatar.png') }}" alt="avatar"></a></li>
+                                                <li class="flex searchlogo"><img src="{{ url_for('static', filename='images/search.svg') }}" alt="search"></li>
+                                                <li class="logo-2"><a href="index.html" class="logo">gamehub</a></li>
+                                                <li class="flex eng">eng <img src="{{ url_for('static', filename='images/Polygon3.svg') }}" alt="triangle"></li>
+                                                <li class="burger"><a href=""></a>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        </a>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </div>
+                </div>
+                <nav class="navigation">
+                        <ul class="nav-ul">
+                                <li class="nav-li">{{nav_builder('categories', 'categories')}}</li>
+                                <li class="nav-li">{{nav_builder('championship', 'championship')}}</li>
+                                <li class="nav-li">{{nav_builder('matches', 'matches')}}</li>
+                        </ul>
+                        
+                </nav>
+        </header>
+
+        {% block content %}
+
+        <div>
+                <div class="m-section"></div>
+                <div class="nrow">
+                        <section class="ncolumn">
+                                <div class="box1"><h2 class="question"><label  for="Post">
+                                                        <input type="text" placeholder="What's on your mind?" name="Post" >
+                                                </label></h2></div>
+                                <div class="box2">
+                                        {% for post in blog_posts.items %}
+                                        <div>
+                                                <img class="piconTortura" src="{{ url_for('static', filename='images/Zappa.jpg') }}" alt="zappa">
+                                                <a href="{{ url_for('users.user_posts',username=post.author.username)}}">Written By: {{ post.author.username }}</a>
+                                                <p class="pDescribe"><a href="{{ url_for('users.user_posts',username=post.author.username)}}">Posted By: <span>{{ post.author.username }}</span></a>Published on: {{ post.date.strftime('%Y-%m-%d') }}</p>
+                                        </div>
+                                        <div class="pHeader"> <a href="{{ url_for('blog_posts.blog_post',blog_post_id=post.id )}}">{{ post.title }}</a></div>
+                                        <hr>
+                                        <p class="pText">{{ post.text }}</p>
+                                        <hr>
+                                        <div class="pReact">
+                                                <a href="#"><div class="react">
+                                                <img src="{{ url_for('static', filename='images/like.png') }}" alt="like">
+                                                <p>Like</p></div></a>
+                                                <div class="p-line"></div>
+                                                <a href="#"><div class="react"><img src="{{ url_for('static', filename='images/comment.png') }}" alt="comment">
+                                                <p>Comment</p></div></a>
+                                                <div class="p-line"></div>
+                                                <a href="#"><div class="react"><img src="{{ url_for('static', filename='images/gift.png') }}" alt="gift">
+                                                <p>Give award</p></div></a>
+                                        </div>
+                                </div>
+
+                                <div class="box4"><p class="bookad">advertisment</p></div>
+                                <div class="box2">
+                                        {% for post in blog_posts.items %}
+                                        <div>
+                                                <img class="piconTortura" src="{{ url_for('static', filename='images/Zappa.jpg') }}" alt="zappa">
+                                                <a href="{{ url_for('users.user_posts',username=post.author.username)}}">Written By: {{ post.author.username }}</a>
+                                                <p class="pDescribe"><a href="{{ url_for('users.user_posts',username=post.author.username)}}">Posted By: <span>{{ post.author.username }}</span></a>Published on: {{ post.date.strftime('%Y-%m-%d') }}</p>
+                                        </div>
+                                        <div class="pHeader"> <a href="{{ url_for('blog_posts.blog_post',blog_post_id=post.id )}}">{{ post.title }}</a></div>
+                                        <hr>
+                                        <p class="pText">{{ post.text }}</p>
+                                        <hr>
+                                        <div class="pReact">
+                                                <a href="#"><div class="react">
+                                                <img src="{{ url_for('static', filename='images/like.png') }}" alt="like">
+                                                <p>Like</p></div></a>
+                                                <div class="p-line"></div>
+                                                <a href="#"><div class="react"><img src="{{ url_for('static', filename='images/comment.png') }}" alt="comment">
+                                                <p>Comment</p></div></a>
+                                                <div class="p-line"></div>
+                                                <a href="#"><div class="react"><img src="{{ url_for('static', filename='images/gift.png') }}" alt="gift">
+                                                <p>Give award</p></div></a>
+                                        </div>
+                                </div>
+
+                                <nav aria-label="Page navigation example">
+                                  <ul class="pagination justify-content-center">
+                                      {% for page_num in blog_posts.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2) %}
+                                          {% if blog_posts.page == page_num %}
+                                              <li class="page-item disabled">
+                                                  <a class="page-link" href="{{ url_for('core.index',page=page_num)}}">{{ page_num }}</a>
+                                              </li>
+                                          {% else %}
+                                              <li class="page-item ">
+                                                  <a class="page-link" href="{{ url_for('core.index',page=page_num)}}">{{ page_num }}</a>
+                                              </li>
+                                          {% endif %}
+
+                                      {% endfor %}
+                                  </ul>
+                                </nav>
+
+                        </section>
+                        <section class="nncolumn">
+
+                                <div class="box6">
+                                        <h3>Feature match</h3>
+                                        <div class="tSpace">
+                                                <img class="ticons" src="{{ url_for('static', filename='images/Tortura.jpg') }}" alt="tortura">
+                                                <p>Tortura</p>
+                                        </div>
+                                        <p class="mTime">23:00 <br> Today</p>
+                                        <div class="tSpace">
+                                                <img class="ticons" src="{{ url_for('static', filename='images/Zappa.jpg') }}" alt="Zappa">
+                                                <p>Zappa</p>
+                                        </div>
+                                        <div class="matchinfo"><a href="matchinfo.html"><p class="mibutton">match info</p></a></div>
+                                </div>
+                                <div class="box6">
+                                        <h3>Feature match</h3>
+                                        <div class="tSpace">
+                                                <img class="ticons" src="{{ url_for('static', filename='images/Zappa.jpg') }}" alt="zappa">
+                                                <p>Zappa</p>
+                                        </div>
+                                        <p class="mTime">23:30 <br> Today</p>
+                                        <div class="tSpace">
+                                                <img class="ticons" src="{{ url_for('static', filename='images/Tortura.jpg') }}" alt="tortura">
+                                                <p>Zappa</p>
+                                        </div>
+                                        <div class="matchinfo"><a href="matchinfo.html"><p class="mibutton">match info</p></a></div>
+                                </div>
+                                <div class="box8"></div>
+                                <div class="box9"></div>
+                        </section>
+                </div>
+        </div>
+
+        {% endblock %}
+
+        <footer>
+                <div class="footer">
+                        <div class="contain">
+                        <div class="col">
+                                <h3>gamehub</h3>
+                        </div>
+                        <div class="col">
+                                <h3>content</h3>
+                                <ul>
+                                        <a href="categories.html"><li>categories</li></a>
+                                        <a href="pubg-championship.html"><li>championship</li></a>
+                                        <a href="matches.html"><li>matches</li></a>
+                                </ul>
+                        </div>
+                        <div class="col">
+                                <h3>help</h3>
+                                <ul>
+                                        <li>support</li>
+                                        <li>FAQ</li>
+                                </ul>
+                        </div>
+                        <div class="col">
+                                <h3>company</h3>
+                                <ul>
+                                        <li>about</li>
+                                        <li>contact us</li>
+                                        <li>affilation</li>
+                                        <li>plans</li>
+                                </ul>
+                        </div>
+                        <div class="col social">
+                                <h3>social media</h3>
+                                <ul>
+                                        <a href="www.facebook.com"><li><img src="{{ url_for('static', filename='images/Facebook.svg') }}" alt="facebook"></li></a>
+                                        <a href="www.instagram.com"><li><img src="{{ url_for('static', filename='images/instagram.svg') }}" alt="instagram"></li></a>
+                                        <a href="www.twitter.com"><li><img src="{{ url_for('static', filename='images/twitter.svg') }}" alt="twitter"></li></a>
+                                </ul>
+                        </div>
+                        </div>
+                </div>
+                <hr>
+                <div class="copyright">Copyright © 2010-2020 Freepik Company S.L. All rights reserved.</div>
+
+        </footer>
+</body>
+</html>
