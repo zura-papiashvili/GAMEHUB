@@ -11,20 +11,13 @@ class Gamer(db.Model,UserMixin):
     __tablename__ = "gamers"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-<<<<<<< HEAD
-    #  One_to_one relationship
-    # A student only has one teacher, thus uselist is False.
-    # Strong assumption of 1 teacher per 1 student and vice versa.
-    teacher = db.relationship('Teacher', backref="gamers", uselist=False)
-=======
     email = db.Column(db.String,unique=True)
     password = db.Column(db.String)
     photo = db.Column(db.String)
     role = db.Column(db.String)
-    # posts = relationship('posts', backref="author",lazy=True)
+    posts = db.relationship('posts', backref="author",lazy=True)
     # clan = relationship('clans', backref="member")
     role = db.Column(db.String)
->>>>>>> e29d5db273b9cb57533b08de20ee33cb631bdf3a
 
 
     def __init__(self, name,email,password):
@@ -50,8 +43,8 @@ class Post(db.Model):
     text = db.Column(db.Text,nullable=False)
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     reaction = db.Column(db.Integer)  # raodenoba ramdeni mowoneba aqvs
-    comment = db.relationship('comment', backref="posts")
-    #author = db.relationship('gamers', backref="posts")
+    #comment = db.relationship('comment', backref="posts")
+    author = db.Column(db.Integer,db.ForeignKey("gamers.id"))
 
 
     def __init__(self, title, text,gamer_id):

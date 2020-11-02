@@ -5,3 +5,30 @@
       <a class="nav-link" href="{{ url_for(endpoint) }}">{{name}}</a>
     {% endif %}
 {% endmacro %}
+
+{% macro post_builder(post) %}
+<div class="box2">
+  {% for post in blog_posts.items %}
+  <div>
+          <img class="piconTortura" src="{{ url_for('static', filename='images/Zappa.jpg') }}" alt="zappa">
+          <a href="{{ url_for('users.user_posts',username=post.author.username)}}">Written By: {{ post.author.username }}</a>
+          <p class="pDescribe"><a href="{{ url_for('users.user_posts',username=post.author.username)}}">Posted By: <span>{{ post.author.username }}</span></a>Published on: {{ post.date.strftime('%Y-%m-%d') }}</p>
+  </div>
+  <div class="pHeader"> <a href="{{ url_for('blog_posts.blog_post',blog_post_id=post.id )}}">{{ post.title }}</a></div>
+  <hr>
+  <p class="pText">{{ post.text }}</p>
+  <hr>
+  <div class="pReact">
+          <a href="#"><div class="react">
+          <img src="{{ url_for('static', filename='images/like.png') }}" alt="like">
+          <p>Like</p></div></a>
+          <div class="p-line"></div>
+          <a href="#"><div class="react"><img src="{{ url_for('static', filename='images/comment.png') }}" alt="comment">
+          <p>Comment</p></div></a>
+          <div class="p-line"></div>
+          <a href="#"><div class="react"><img src="{{ url_for('static', filename='images/gift.png') }}" alt="gift">
+          <p>Give award</p></div></a>
+  </div>
+</div>
+
+{%endmacro%}
