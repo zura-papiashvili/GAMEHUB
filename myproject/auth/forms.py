@@ -17,10 +17,10 @@ class RegistrationForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired(),EqualTo('pass_confirm',message = 'Password must match')])
     pass_confirm = PasswordField('Confirm Password', validators=[DataRequired()])
     submit = SubmitField('Register')
-    def check_email(self,field):
-        if Gamer.query.filter_by(email=field.data).first():
+    def check_email(self,email):
+        if Gamer.query.filter_by(email=email).first():
             raise ValidationError('Your email has been already registered')
 
-    def check_username(self,field):
-        if Gamer.query.filter_by(username=field.data).first():
+    def check_username(self,username):
+        if Gamer.query.filter_by(name=username).first():
             raise ValidationError('Your username has been already registered')

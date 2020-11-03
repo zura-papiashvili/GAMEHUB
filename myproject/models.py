@@ -24,10 +24,10 @@ class Gamer(db.Model,UserMixin):
         # მხოლოდ გვჭირდება ამ ბაზის მოდელისთვის უნიკალური წევრის ატრიბუტის აღწერა
         self.name = name
         self.email=email
-        self.password_hash=generate_password_hash(password)
+        self.password=generate_password_hash(password)
 
     def check_password(self,password):
-        return check_password_hash(self.password_hash,password)
+        return check_password_hash(self.password,password)
 
     def __repr__(self):
 
@@ -42,13 +42,15 @@ class Post(db.Model):
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     reaction = db.Column(db.Integer)  # raodenoba ramdeni mowoneba aqvs
     #comment = db.relationship('comment', backref="posts")
-    author = db.Column(db.Integer,db.ForeignKey("gamers.id"))
-
+    author_id = db.Column(db.Integer,db.ForeignKey("gamers.id"))
 
     def __init__(self, title, text,gamer_id):
         self.title = title
         self.text = text
-        self.gamer_id = gamer_id
+        self.author_id = gamer_id
 
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date} --- {self.title}"
+
+    def author_name(self):
+        return "Unknown"

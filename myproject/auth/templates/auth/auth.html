@@ -12,7 +12,7 @@
 	<div class="reg-container" id="reg-container">
 		<div class="form-reg-container sign-up-reg-container">
             <a href="{{url_for('index')}}"><img class="arrow" src="{{ url_for('static',filename='images/arrow.png')}}"></a>
-			<form class="reg-form" action="#">
+			<form class="reg-form" method="POST">
 				<h1>Create Account</h1>
 				{{ regForm.hidden_tag()}}
 				{{ regForm.username(placeholder="Username")}}
@@ -24,7 +24,7 @@
 		</div>
 		<div class="form-reg-container sign-in-reg-container">
             <a href="{{url_for('index')}}"><img class="arrow" src="{{ url_for('static',filename='images/arrow.png')}}"></a>
-			<form class="reg-form" action="#">
+			<form class="reg-form" method="POST">
 				<h1>Sign in</h1>
 				{{ loginForm.hidden_tag() }}
 				{{ loginForm.email(placeholder="Email")}}

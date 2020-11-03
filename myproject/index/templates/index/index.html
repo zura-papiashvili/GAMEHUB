@@ -16,6 +16,7 @@
        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fonts.css') }}">
+       <script src="{{url_for('static',filename='/js/post.js')}}"></script>
 </head>
 <body>
         <header>
@@ -66,13 +67,39 @@
                 <div class="m-section"></div>
                 <div class="nrow">
                         <section class="ncolumn">
-                                <!-- <div class="box1"><h2 class="question"><label  for="Post">
-                                                        <input type="text" placeholder="What's on your mind?" name="Post" >
-                                                </label></h2>
-                                        </div> -->
+                                
+                                {% if current_user.is_authenticated%}
+                                <div class="mainDiv">
+                                        <form method="POST">
+                                                {{form.hidden_tag()}}
+                                                <div class="post-title">
+                                                        {{form.submit(class="submit-button")}}
+                                                        <!-- <input class="submit-button" type="submit" method="POST" value="Create a Post"> -->
+                                                        <!-- <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i>Create a Post</a>
+                                                        <p><i class="fa fa-times" aria-hidden="true"></i></p> -->
+                                                </div>
+                                                <div id="post-body">
+                                                        <label for="pTitle">
+                                                                {{form.title(class="p-Title",placeholder="Title")}}
+                                                        </label>
+                                                        
+                                                        <div class="textarea">
+                                                                {{form.text(class="textarea",placeholder="what's on you mind?")}}
+                                                        </div>
+                                                        
+                                                        <!-- <label for="pTitle">
+                                                                <input class="p-Title" type="text" placeholder="Title" name="title" >
+                                                        </label>
+                                                        <div class="textarea">
+                                                                <textarea name="text" onkeyup="InputAdjust(this)" placeholder="what's on you mind?"></textarea>
+                                                        </div> -->
+                                                </div>
+                                        </form>
+                                </div>
+                                {% endif %}
 
                                 {% for post in posts %}
-                                        post_builder(post)
+                                        {{post_builder(post)}}
                                 {% endfor %}
 
 
