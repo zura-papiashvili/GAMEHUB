@@ -1,0 +1,10 @@
+gunicorn
+flask
+flask-login
+flask-sqlalchemy
+flask-wtf
+wtforms
+flask-sqlalchemy
+flask-migrate
+werkzeug
+uwsgi
